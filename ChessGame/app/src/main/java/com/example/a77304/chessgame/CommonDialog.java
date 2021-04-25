@@ -13,14 +13,14 @@ import android.widget.TextView;
  */
 
 public class CommonDialog extends Dialog {
-    public Button posBtn,negBtn;
-    public TextView tv_title,tv_content;
-    public String title,content;
+    public Button posBtn, negBtn;
+    public TextView tv_title, tv_content;
+    public String title, content;
 
-    public CommonDialog(Context context,String title,String content) {
-        super(context,R.style.CustomDialog);
-        this.title=title;
-        this.content=content;
+    public CommonDialog(Context context, String title, String content) {
+        super(context, R.style.CustomDialog);
+        this.title = title;
+        this.content = content;
     }
 
     @Override
@@ -36,9 +36,9 @@ public class CommonDialog extends Dialog {
         posBtn = (Button) findViewById(R.id.posBtn);
         negBtn = (Button) findViewById(R.id.negBtn);
 
-        tv_title=(TextView)findViewById(R.id.tv_title);
+        tv_title = (TextView) findViewById(R.id.tv_title);
         tv_title.setText(title);
-        tv_content=(TextView)findViewById(R.id.tv_content);
+        tv_content = (TextView) findViewById(R.id.tv_content);
         tv_content.setText(content);
 
     }
@@ -49,7 +49,7 @@ public class CommonDialog extends Dialog {
         posBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( onClickBottomListener!= null) {
+                if (onClickBottomListener != null) {
                     onClickBottomListener.onPositiveClick();
                 }
             }
@@ -58,7 +58,7 @@ public class CommonDialog extends Dialog {
         negBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( onClickBottomListener!= null) {
+                if (onClickBottomListener != null) {
                     onClickBottomListener.onNegtiveClick();
                 }
             }
@@ -66,16 +66,18 @@ public class CommonDialog extends Dialog {
     }
 
     public CommonDialog.OnClickBottomListener onClickBottomListener;
+
     public CommonDialog setOnClickBottomListener(CommonDialog.OnClickBottomListener onClickBottomListener) {
         this.onClickBottomListener = onClickBottomListener;
         return this;
     }
 
-    public interface OnClickBottomListener{
+    public interface OnClickBottomListener {
         /**
          * 点击确定按钮事件
          */
         public void onPositiveClick();
+
         /**
          * 点击取消按钮事件
          */

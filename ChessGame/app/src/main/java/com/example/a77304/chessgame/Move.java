@@ -7,8 +7,9 @@ package com.example.a77304.chessgame;
 public class Move {
     public Pos fromPos;
     public Pos toPos;
-    public Move(Pos fromPos,Pos toPos){
-        this.fromPos=fromPos;
-        this.toPos=toPos;
+
+    public Move(Pos fromPos, Pos toPos) {
+        this.fromPos = fromPos;
+        this.toPos = toPos;
     }
 }

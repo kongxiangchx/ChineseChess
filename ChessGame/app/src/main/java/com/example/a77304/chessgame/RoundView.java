@@ -24,45 +24,44 @@ public class RoundView extends SurfaceView implements SurfaceHolder.Callback {
 
     public RoundView(Context context, ChessInfo chessInfo) {
         super(context);
-        this.chessInfo=chessInfo;
+        this.chessInfo = chessInfo;
         getHolder().addCallback(this);
         init();
     }
 
-    void init(){
-        paint1=new Paint();
+    void init() {
+        paint1 = new Paint();
         paint1.setStyle(Paint.Style.FILL);
-        paint1.setColor(Color.rgb(222,184,135));
+        paint1.setColor(Color.rgb(222, 184, 135));
 
-        paint2=new Paint();
+        paint2 = new Paint();
         paint2.setTextSize(75);
         paint2.setStrokeWidth(1);
         paint2.setAntiAlias(true);
         paint2.setColor(Color.RED);
 
-        paint3=new Paint();
+        paint3 = new Paint();
         paint3.setTextSize(75);
         paint3.setStrokeWidth(1);
         paint3.setAntiAlias(true);
         paint3.setColor(Color.BLACK);
 
-        rectF=new RectF(0,0,450,150);
+        rectF = new RectF(0, 0, 450, 150);
     }
 
-    public void Draw(Canvas canvas){
-        canvas.drawRect(rectF,paint1);
-        if(chessInfo.IsRedGo==true){
-            canvas.drawText("红方回合",75,105,paint2);
-        }
-        else{
-            canvas.drawText("黑方回合",75,105,paint3);
+    public void Draw(Canvas canvas) {
+        canvas.drawRect(rectF, paint1);
+        if (chessInfo.IsRedGo == true) {
+            canvas.drawText("红方回合", 75, 105, paint2);
+        } else {
+            canvas.drawText("黑方回合", 75, 105, paint3);
         }
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(450,150);
+        setMeasuredDimension(450, 150);
     }
 
     public void surfaceChanged(SurfaceHolder holder, int format, int width,
@@ -77,23 +76,27 @@ public class RoundView extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceDestroyed(SurfaceHolder holder) {
 
     }
-    class TutorialThread extends Thread{//刷帧线程
+
+    class TutorialThread extends Thread {//刷帧线程
         public int span = 100;//睡眠100毫秒数
         public SurfaceHolder surfaceHolder;
+
         public TutorialThread(SurfaceHolder surfaceHolder) {
             this.surfaceHolder = surfaceHolder;
         }
+
         public void run() {//重写的方法
             Canvas c;//画布
             while (true) {//循环绘制
                 c = this.surfaceHolder.lockCanvas();
-                try{
+                try {
                     Draw(c);//绘制方法
-                }catch (Exception e){}
-                if(c!=null) this.surfaceHolder.unlockCanvasAndPost(c);
-                try{
+                } catch (Exception e) {
+                }
+                if (c != null) this.surfaceHolder.unlockCanvasAndPost(c);
+                try {
                     Thread.sleep(span);//睡眠时间，单位是毫秒
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();//输出异常堆栈信息
                 }
             }

@@ -15,14 +15,14 @@ import android.widget.RadioGroup;
  */
 
 public class RetryDialog extends Dialog implements RadioGroup.OnCheckedChangeListener {
-    public Button posBtn,negBtn;
+    public Button posBtn, negBtn;
     public RadioGroup holdGroup;
-    public RadioButton holdRed,holdBlack;
+    public RadioButton holdRed, holdBlack;
 
     public boolean isPlayerRed;
 
     public RetryDialog(Context context) {
-        super(context,R.style.CustomDialog);
+        super(context, R.style.CustomDialog);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class RetryDialog extends Dialog implements RadioGroup.OnCheckedChangeLis
         setCanceledOnTouchOutside(false);
         initView();
         initEvent();
-        isPlayerRed=true;
+        isPlayerRed = true;
         holdRed.setChecked(true);
         holdGroup.setOnCheckedChangeListener(this);
     }
@@ -41,9 +41,9 @@ public class RetryDialog extends Dialog implements RadioGroup.OnCheckedChangeLis
         posBtn = (Button) findViewById(R.id.posBtn);
         negBtn = (Button) findViewById(R.id.negBtn);
 
-        holdGroup=(RadioGroup)findViewById(R.id.holdGroup);
-        holdRed=(RadioButton)findViewById(R.id.holdRed);
-        holdBlack=(RadioButton)findViewById(R.id.holdBlack);
+        holdGroup = (RadioGroup) findViewById(R.id.holdGroup);
+        holdRed = (RadioButton) findViewById(R.id.holdRed);
+        holdBlack = (RadioButton) findViewById(R.id.holdBlack);
     }
 
 
@@ -52,7 +52,7 @@ public class RetryDialog extends Dialog implements RadioGroup.OnCheckedChangeLis
         posBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( onClickBottomListener!= null) {
+                if (onClickBottomListener != null) {
                     onClickBottomListener.onPositiveClick();
                 }
             }
@@ -61,7 +61,7 @@ public class RetryDialog extends Dialog implements RadioGroup.OnCheckedChangeLis
         negBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( onClickBottomListener!= null) {
+                if (onClickBottomListener != null) {
                     onClickBottomListener.onNegtiveClick();
                 }
             }
@@ -69,6 +69,7 @@ public class RetryDialog extends Dialog implements RadioGroup.OnCheckedChangeLis
     }
 
     public RetryDialog.OnClickBottomListener onClickBottomListener;
+
     public RetryDialog setOnClickBottomListener(RetryDialog.OnClickBottomListener onClickBottomListener) {
         this.onClickBottomListener = onClickBottomListener;
         return this;
@@ -76,14 +77,13 @@ public class RetryDialog extends Dialog implements RadioGroup.OnCheckedChangeLis
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-        RadioButton checked=(RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
-        switch(radioGroup.getId()){
+        RadioButton checked = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+        switch (radioGroup.getId()) {
             case R.id.holdGroup:
-                if(checked.getId()==R.id.holdRed){
-                    isPlayerRed=true;
-                }
-                else{
-                    isPlayerRed=false;
+                if (checked.getId() == R.id.holdRed) {
+                    isPlayerRed = true;
+                } else {
+                    isPlayerRed = false;
                 }
                 break;
             default:
@@ -91,11 +91,12 @@ public class RetryDialog extends Dialog implements RadioGroup.OnCheckedChangeLis
         }
     }
 
-    public interface OnClickBottomListener{
+    public interface OnClickBottomListener {
         /**
          * 点击确定按钮事件
          */
         public void onPositiveClick();
+
         /**
          * 点击取消按钮事件
          */

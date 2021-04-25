@@ -17,19 +17,19 @@ import android.widget.RadioGroup;
  * Created by 77304 on 2021/4/13.
  */
 
-public class SettingDialog extends Dialog implements RadioGroup.OnCheckedChangeListener{
-    public Button posBtn,negBtn;
+public class SettingDialog extends Dialog implements RadioGroup.OnCheckedChangeListener {
+    public Button posBtn, negBtn;
     public RadioGroup musicGroup;
     public RadioGroup effectGroup;
-    public RadioButton musicTrue,musicFalse;
-    public RadioButton effectTrue,effectFalse;
+    public RadioButton musicTrue, musicFalse;
+    public RadioButton effectTrue, effectFalse;
 
-    public boolean isMusicPlay,isEffectPlay;
+    public boolean isMusicPlay, isEffectPlay;
 
     public SettingDialog(Context context) {
-        super(context,R.style.CustomDialog);
-        isMusicPlay=HomeActivity.setting.isMusicPlay;
-        isEffectPlay=HomeActivity.setting.isEffectPlay;
+        super(context, R.style.CustomDialog);
+        isMusicPlay = HomeActivity.setting.isMusicPlay;
+        isEffectPlay = HomeActivity.setting.isEffectPlay;
     }
 
     @Override
@@ -39,16 +39,14 @@ public class SettingDialog extends Dialog implements RadioGroup.OnCheckedChangeL
         setCanceledOnTouchOutside(false);
         initView();
         initEvent();
-        if(isMusicPlay){
+        if (isMusicPlay) {
             musicTrue.setChecked(true);
-        }
-        else{
+        } else {
             musicFalse.setChecked(true);
         }
-        if(isEffectPlay){
+        if (isEffectPlay) {
             effectTrue.setChecked(true);
-        }
-        else{
+        } else {
             effectFalse.setChecked(true);
         }
         musicGroup.setOnCheckedChangeListener(this);
@@ -58,13 +56,13 @@ public class SettingDialog extends Dialog implements RadioGroup.OnCheckedChangeL
     private void initView() {
         posBtn = (Button) findViewById(R.id.posBtn);
         negBtn = (Button) findViewById(R.id.negBtn);
-        musicGroup=(RadioGroup)findViewById(R.id.musicGroup);
-        musicTrue=(RadioButton)findViewById(R.id.musicTrue);
-        musicFalse=(RadioButton)findViewById(R.id.musicFalse);
+        musicGroup = (RadioGroup) findViewById(R.id.musicGroup);
+        musicTrue = (RadioButton) findViewById(R.id.musicTrue);
+        musicFalse = (RadioButton) findViewById(R.id.musicFalse);
 
-        effectGroup=(RadioGroup)findViewById(R.id.effectGroup);
-        effectTrue=(RadioButton)findViewById(R.id.effectTrue);
-        effectFalse=(RadioButton)findViewById(R.id.effectFalse);
+        effectGroup = (RadioGroup) findViewById(R.id.effectGroup);
+        effectTrue = (RadioButton) findViewById(R.id.effectTrue);
+        effectFalse = (RadioButton) findViewById(R.id.effectFalse);
     }
 
 
@@ -73,7 +71,7 @@ public class SettingDialog extends Dialog implements RadioGroup.OnCheckedChangeL
         posBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( onClickBottomListener!= null) {
+                if (onClickBottomListener != null) {
                     onClickBottomListener.onPositiveClick();
                 }
             }
@@ -82,7 +80,7 @@ public class SettingDialog extends Dialog implements RadioGroup.OnCheckedChangeL
         negBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( onClickBottomListener!= null) {
+                if (onClickBottomListener != null) {
                     onClickBottomListener.onNegtiveClick();
                 }
             }
@@ -90,6 +88,7 @@ public class SettingDialog extends Dialog implements RadioGroup.OnCheckedChangeL
     }
 
     public OnClickBottomListener onClickBottomListener;
+
     public SettingDialog setOnClickBottomListener(OnClickBottomListener onClickBottomListener) {
         this.onClickBottomListener = onClickBottomListener;
         return this;
@@ -97,22 +96,20 @@ public class SettingDialog extends Dialog implements RadioGroup.OnCheckedChangeL
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-        RadioButton checked=(RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
-        switch(radioGroup.getId()){
+        RadioButton checked = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+        switch (radioGroup.getId()) {
             case R.id.musicGroup:
-                if(checked.getId()==R.id.musicTrue){
-                    isMusicPlay=true;
-                }
-                else{
-                    isMusicPlay=false;
+                if (checked.getId() == R.id.musicTrue) {
+                    isMusicPlay = true;
+                } else {
+                    isMusicPlay = false;
                 }
                 break;
             case R.id.effectGroup:
-                if(checked.getId()==R.id.effectTrue){
-                    isEffectPlay=true;
-                }
-                else{
-                    isEffectPlay=false;
+                if (checked.getId() == R.id.effectTrue) {
+                    isEffectPlay = true;
+                } else {
+                    isEffectPlay = false;
                 }
                 break;
             default:
@@ -120,11 +117,12 @@ public class SettingDialog extends Dialog implements RadioGroup.OnCheckedChangeL
         }
     }
 
-    public interface OnClickBottomListener{
+    public interface OnClickBottomListener {
         /**
          * 点击确定按钮事件
          */
         public void onPositiveClick();
+
         /**
          * 点击取消按钮事件
          */

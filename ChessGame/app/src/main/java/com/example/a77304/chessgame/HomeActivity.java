@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     public Button btn_pvm;
     public Button btn_pvp;
     public Button btn_help;
@@ -38,15 +38,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_home);
         initMusic();
 
-        sharedPreferences=getSharedPreferences("setting",MODE_PRIVATE);
-        boolean isFirstRun=sharedPreferences.getBoolean("isFirstRun", true);
-        Editor editor=sharedPreferences.edit();
-        if(isFirstRun){
+        sharedPreferences = getSharedPreferences("setting", MODE_PRIVATE);
+        boolean isFirstRun = sharedPreferences.getBoolean("isFirstRun", true);
+        Editor editor = sharedPreferences.edit();
+        if (isFirstRun) {
             editor.putBoolean("isFirstRun", false);
-            editor.putBoolean("isMusicPlay",true);
-            editor.putBoolean("isEffectPlay",true);
-            editor.putBoolean("isPlayerRed",true);
-            editor.putInt("mLevel",2);
+            editor.putBoolean("isMusicPlay", true);
+            editor.putBoolean("isEffectPlay", true);
+            editor.putBoolean("isPlayerRed", true);
+            editor.putInt("mLevel", 2);
             editor.commit();
             /*try {
                 SaveInfo.SerializeChessInfo(new ChessInfo(),"ChessInfo_pvp.bin");
@@ -60,55 +60,55 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         PermissionUtils.isGrantExternalRW(this, 1);
 
-        setting=new Setting(sharedPreferences);
+        setting = new Setting(sharedPreferences);
 
-        btn_pvm=(Button)findViewById(R.id.btn_pvm);
+        btn_pvm = (Button) findViewById(R.id.btn_pvm);
         btn_pvm.setOnClickListener(this);
 
-        btn_pvp=(Button)findViewById(R.id.btn_pvp);
+        btn_pvp = (Button) findViewById(R.id.btn_pvp);
         btn_pvp.setOnClickListener(this);
 
-        btn_help=(Button)findViewById(R.id.btn_help);
+        btn_help = (Button) findViewById(R.id.btn_help);
         btn_help.setOnClickListener(this);
 
-        btn_about=(Button)findViewById(R.id.btn_about);
+        btn_about = (Button) findViewById(R.id.btn_about);
         btn_about.setOnClickListener(this);
 
-        btn_setting=(Button)findViewById(R.id.btn_setting);
+        btn_setting = (Button) findViewById(R.id.btn_setting);
         btn_setting.setOnClickListener(this);
     }
 
-    void initMusic(){
-        backMusic=MediaPlayer.create(this,R.raw.background);
+    void initMusic() {
+        backMusic = MediaPlayer.create(this, R.raw.background);
         backMusic.setLooping(true);
-        selectMusic=MediaPlayer.create(this,R.raw.select);
-        selectMusic.setVolume(2f,2f);
-        clickMusic=MediaPlayer.create(this,R.raw.click);
-        clickMusic.setVolume(2f,2f);
-        checkMusic=MediaPlayer.create(this,R.raw.checkmate);
-        checkMusic.setVolume(2f,2f);
-        winMusic=MediaPlayer.create(this,R.raw.win);
-        winMusic.setVolume(2f,2f);
+        selectMusic = MediaPlayer.create(this, R.raw.select);
+        selectMusic.setVolume(2f, 2f);
+        clickMusic = MediaPlayer.create(this, R.raw.click);
+        clickMusic.setVolume(2f, 2f);
+        checkMusic = MediaPlayer.create(this, R.raw.checkmate);
+        checkMusic.setVolume(2f, 2f);
+        winMusic = MediaPlayer.create(this, R.raw.win);
+        winMusic.setVolume(2f, 2f);
     }
 
     @Override
     public void onClick(View view) {
         Intent intent;
-        if(setting.isEffectPlay){
+        if (setting.isEffectPlay) {
             selectMusic.start();
         }
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_pvm:
-                intent=new Intent(HomeActivity.this,PvMActivity.class);
+                intent = new Intent(HomeActivity.this, PvMActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn_pvp:
-                intent=new Intent(HomeActivity.this,PvPActivity.class);
+                intent = new Intent(HomeActivity.this, PvPActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn_help:
-                final CommonDialog helpDialog=new CommonDialog(this,"帮助","帮助里面什么都没有");
-                helpDialog.setOnClickBottomListener(new CommonDialog.OnClickBottomListener(){
+                final CommonDialog helpDialog = new CommonDialog(this, "帮助", "帮助里面什么都没有");
+                helpDialog.setOnClickBottomListener(new CommonDialog.OnClickBottomListener() {
 
                     @Override
                     public void onPositiveClick() {
@@ -123,8 +123,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 helpDialog.show();
                 break;
             case R.id.btn_about:
-                final CommonDialog aboutDialog=new CommonDialog(this,"关于","关于里面什么都没有");
-                aboutDialog.setOnClickBottomListener(new CommonDialog.OnClickBottomListener(){
+                final CommonDialog aboutDialog = new CommonDialog(this, "关于", "关于里面什么都没有");
+                aboutDialog.setOnClickBottomListener(new CommonDialog.OnClickBottomListener() {
 
                     @Override
                     public void onPositiveClick() {
@@ -139,34 +139,34 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 aboutDialog.show();
                 break;
             case R.id.btn_setting:
-                final SettingDialog settingDialog=new SettingDialog(this);
+                final SettingDialog settingDialog = new SettingDialog(this);
                 settingDialog.setOnClickBottomListener(new SettingDialog.OnClickBottomListener() {
                     @Override
                     public void onPositiveClick() {
-                        Editor editor=sharedPreferences.edit();
-                        boolean flag=false;
-                        if(setting.isMusicPlay!=settingDialog.isMusicPlay){
-                            setting.isMusicPlay=settingDialog.isMusicPlay;
-                            if(setting.isMusicPlay){
+                        Editor editor = sharedPreferences.edit();
+                        boolean flag = false;
+                        if (setting.isMusicPlay != settingDialog.isMusicPlay) {
+                            setting.isMusicPlay = settingDialog.isMusicPlay;
+                            if (setting.isMusicPlay) {
                                 backMusic.start();
-                            }
-                            else {
+                            } else {
                                 backMusic.pause();
                                 backMusic.seekTo(0);
                             }
-                            editor.putBoolean("isMusicPlay",settingDialog.isMusicPlay);
-                            flag=true;
+                            editor.putBoolean("isMusicPlay", settingDialog.isMusicPlay);
+                            flag = true;
                         }
-                        if(setting.isEffectPlay!=settingDialog.isEffectPlay){
-                            setting.isEffectPlay=settingDialog.isEffectPlay;
-                            editor.putBoolean("isEffectPlay",settingDialog.isEffectPlay);
-                            flag=true;
+                        if (setting.isEffectPlay != settingDialog.isEffectPlay) {
+                            setting.isEffectPlay = settingDialog.isEffectPlay;
+                            editor.putBoolean("isEffectPlay", settingDialog.isEffectPlay);
+                            flag = true;
                         }
-                        if(flag){
+                        if (flag) {
                             editor.commit();
                         }
                         settingDialog.dismiss();
                     }
+
                     @Override
                     public void onNegtiveClick() {
                         settingDialog.dismiss();
@@ -184,9 +184,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         switch (requestCode) {
             case 1:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.e("chen","获取存储权限成功");
+                    Log.e("chen", "获取存储权限成功");
                 } else {
-                    Toast.makeText(this,"获取存储权限失败，请手动开启存储权限",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "获取存储权限失败，请手动开启存储权限", Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 break;
@@ -203,7 +203,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onStart() {
-        if(setting.isMusicPlay){
+        if (setting.isMusicPlay) {
             backMusic.start();
         }
         super.onStart();

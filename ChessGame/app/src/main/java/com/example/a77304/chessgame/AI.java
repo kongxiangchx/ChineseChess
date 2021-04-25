@@ -15,7 +15,7 @@ import java.util.TreeMap;
  */
 
 public class AI {
-    public static int[][][] pieceValue=new int[][][]{
+    public static int[][][] pieceValue = new int[][][]{
             //黑将
             {
                     {0, 0, 0, 8888, 8888, 8888, 0, 0, 0},
@@ -32,9 +32,9 @@ public class AI {
             },
             //黑士
             {
-                    {0, 0, 0,20, 0,20, 0, 0, 0},
-                    {0, 0, 0, 0,23, 0, 0, 0, 0},
-                    {0, 0, 0,20, 0,20, 0, 0, 0},
+                    {0, 0, 0, 20, 0, 20, 0, 0, 0},
+                    {0, 0, 0, 0, 23, 0, 0, 0, 0},
+                    {0, 0, 0, 20, 0, 20, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
 
@@ -46,11 +46,11 @@ public class AI {
             },
             //黑象
             {
-                    {0, 0,20, 0, 0, 0,20, 0, 0},
+                    {0, 0, 20, 0, 0, 0, 20, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                    {18, 0, 0, 0,23, 0, 0, 0, 18},
+                    {18, 0, 0, 0, 23, 0, 0, 0, 18},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                    {0, 0,20, 0, 0, 0,20, 0, 0},
+                    {0, 0, 20, 0, 0, 0, 20, 0, 0},
 
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -64,12 +64,12 @@ public class AI {
                     {85, 90, 92, 93, 78, 93, 92, 90, 85},
                     {93, 92, 94, 95, 92, 95, 94, 92, 93},
                     {92, 94, 98, 95, 98, 95, 98, 94, 92},
-                    {90, 98,101,102,103,102,101, 98, 90},
+                    {90, 98, 101, 102, 103, 102, 101, 98, 90},
 
-                    {90,100, 99,103,104,103, 99,100, 90},
-                    {93,108,100,107,100,107,100,108, 93},
-                    {92, 98, 99,103, 99,103, 99, 98, 92},
-                    {90, 96,103, 97, 94, 97,103, 96, 90},
+                    {90, 100, 99, 103, 104, 103, 99, 100, 90},
+                    {93, 108, 100, 107, 100, 107, 100, 108, 93},
+                    {92, 98, 99, 103, 99, 103, 99, 98, 92},
+                    {90, 96, 103, 97, 94, 97, 103, 96, 90},
                     {90, 90, 90, 96, 90, 96, 90, 90, 90},
             },
             //黑车
@@ -88,32 +88,32 @@ public class AI {
             },
             //黑炮
             {
-                    { 96,  96,  97, 99,  99, 99,  97,  96,  96},
-                    { 96,  97,  98, 98,  98, 98,  98,  97,  96},
-                    { 97,  96, 100, 99, 101, 99, 100,  96,  97},
-                    { 96,  96,  96, 96,  96, 96,  96,  96,  96},
-                    { 95,  96,  99, 96, 100, 96,  99,  96,  95},
+                    {96, 96, 97, 99, 99, 99, 97, 96, 96},
+                    {96, 97, 98, 98, 98, 98, 98, 97, 96},
+                    {97, 96, 100, 99, 101, 99, 100, 96, 97},
+                    {96, 96, 96, 96, 96, 96, 96, 96, 96},
+                    {95, 96, 99, 96, 100, 96, 99, 96, 95},
 
-                    { 96,  96,  96, 96, 100, 96,  96,  96,  96},
-                    { 96,  99,  99, 98, 100, 98,  99,  99,  96},
-                    { 97,  97,  96, 91,  92, 91,  96,  97,  97},
-                    { 98,  98,  96, 92,  89, 92,  96,  98,  98},
-                    {100, 100,  96, 91,  90, 91,  96, 100, 100},
+                    {96, 96, 96, 96, 100, 96, 96, 96, 96},
+                    {96, 99, 99, 98, 100, 98, 99, 99, 96},
+                    {97, 97, 96, 91, 92, 91, 96, 97, 97},
+                    {98, 98, 96, 92, 89, 92, 96, 98, 98},
+                    {100, 100, 96, 91, 90, 91, 96, 100, 100},
             },
             //黑卒
             {
 
-                    { 0,  0,  0,  0,  0,  0,  0,  0,  0},
-                    { 0,  0,  0,  0,  0,  0,  0,  0,  0},
-                    { 0,  0,  0,  0,  0,  0,  0,  0,  0},
-                    { 7,  0,  7,  0, 15,  0,  7,  0,  7},
-                    { 7,  0, 13,  0, 16,  0, 13,  0,  7},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {7, 0, 7, 0, 15, 0, 7, 0, 7},
+                    {7, 0, 13, 0, 16, 0, 13, 0, 7},
 
                     {14, 18, 20, 27, 29, 27, 20, 18, 14},
                     {19, 23, 27, 29, 30, 29, 27, 23, 19},
                     {19, 24, 32, 37, 37, 37, 32, 24, 19},
                     {19, 24, 34, 42, 44, 42, 34, 24, 19},
-                    { 9,  9,  9, 11, 13, 11,  9,  9,  9},
+                    {9, 9, 9, 11, 13, 11, 9, 9, 9},
             },
             //红帅
             {
@@ -139,9 +139,9 @@ public class AI {
 
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                    {0, 0, 0,20, 0,20, 0, 0, 0},
-                    {0, 0, 0, 0,23, 0, 0, 0, 0},
-                    {0, 0, 0,20, 0,20, 0, 0, 0}
+                    {0, 0, 0, 20, 0, 20, 0, 0, 0},
+                    {0, 0, 0, 0, 23, 0, 0, 0, 0},
+                    {0, 0, 0, 20, 0, 20, 0, 0, 0}
             },
             //红象
             {
@@ -151,21 +151,21 @@ public class AI {
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
 
-                    {0, 0,20, 0, 0, 0,20, 0, 0},
+                    {0, 0, 20, 0, 0, 0, 20, 0, 0},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                    {18,0, 0, 0,23, 0, 0, 0,18},
+                    {18, 0, 0, 0, 23, 0, 0, 0, 18},
                     {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                    {0, 0,20, 0, 0, 0,20, 0, 0}
+                    {0, 0, 20, 0, 0, 0, 20, 0, 0}
             },
             //马
             {
                     {90, 90, 90, 96, 90, 96, 90, 90, 90},
-                    {90, 96,103, 97, 94, 97,103, 96, 90},
-                    {92, 98, 99,103, 99,103, 99, 98, 92},
-                    {93,108,100,107,100,107,100,108, 93},
-                    {90,100, 99,103,104,103, 99,100, 90},
+                    {90, 96, 103, 97, 94, 97, 103, 96, 90},
+                    {92, 98, 99, 103, 99, 103, 99, 98, 92},
+                    {93, 108, 100, 107, 100, 107, 100, 108, 93},
+                    {90, 100, 99, 103, 104, 103, 99, 100, 90},
 
-                    {90, 98,101,102,103,102,101, 98, 90},
+                    {90, 98, 101, 102, 103, 102, 101, 98, 90},
                     {92, 94, 98, 95, 98, 95, 98, 94, 92},
                     {93, 92, 94, 95, 92, 95, 94, 92, 93},
                     {85, 90, 92, 93, 78, 93, 92, 90, 85},
@@ -188,88 +188,91 @@ public class AI {
             //炮
             {
 
-                    {100, 100,  96, 91,  90, 91,  96, 100, 100},
-                    { 98,  98,  96, 92,  89, 92,  96,  98,  98},
-                    { 97,  97,  96, 91,  92, 91,  96,  97,  97},
-                    { 96,  99,  99, 98, 100, 98,  99,  99,  96},
-                    { 96,  96,  96, 96, 100, 96,  96,  96,  96},
+                    {100, 100, 96, 91, 90, 91, 96, 100, 100},
+                    {98, 98, 96, 92, 89, 92, 96, 98, 98},
+                    {97, 97, 96, 91, 92, 91, 96, 97, 97},
+                    {96, 99, 99, 98, 100, 98, 99, 99, 96},
+                    {96, 96, 96, 96, 100, 96, 96, 96, 96},
 
-                    { 95,  96,  99, 96, 100, 96,  99,  96,  95},
-                    { 96,  96,  96, 96,  96, 96,  96,  96,  96},
-                    { 97,  96, 100, 99, 101, 99, 100,  96,  97},
-                    { 96,  97,  98, 98,  98, 98,  98,  97,  96},
-                    { 96,  96,  97, 99,  99, 99,  97,  96,  96}
+                    {95, 96, 99, 96, 100, 96, 99, 96, 95},
+                    {96, 96, 96, 96, 96, 96, 96, 96, 96},
+                    {97, 96, 100, 99, 101, 99, 100, 96, 97},
+                    {96, 97, 98, 98, 98, 98, 98, 97, 96},
+                    {96, 96, 97, 99, 99, 99, 97, 96, 96}
             },
             //卒
             {
-                    { 9,  9,  9, 11, 13, 11,  9,  9,  9},
+                    {9, 9, 9, 11, 13, 11, 9, 9, 9},
                     {19, 24, 34, 42, 44, 42, 34, 24, 19},
                     {19, 24, 32, 37, 37, 37, 32, 24, 19},
                     {19, 23, 27, 29, 30, 29, 27, 23, 19},
                     {14, 18, 20, 27, 29, 27, 20, 18, 14},
 
-                    { 7,  0, 13,  0, 16,  0, 13,  0,  7},
-                    { 7,  0,  7,  0, 15,  0,  7,  0,  7},
-                    { 0,  0,  0,  0,  0,  0,  0,  0,  0},
-                    { 0,  0,  0,  0,  0,  0,  0,  0,  0},
-                    { 0,  0,  0,  0,  0,  0,  0,  0,  0}
+                    {7, 0, 13, 0, 16, 0, 13, 0, 7},
+                    {7, 0, 7, 0, 15, 0, 7, 0, 7},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0, 0, 0, 0, 0}
             }
     };
-    public static final int INF=0x3f3f3f3f;
+    public static final int INF = 0x3f3f3f3f;
     public static boolean isPlayerRed;
-    public AI(){
+    public static boolean isKingAlive;
+    public static int attackNum_R, attackNum_B;
+
+    public AI() {
 
     }
-    public static Move getGoodMove(int[][] piece,boolean isRedGo,int depth){
-        Move goodMove=new Move(new Pos(-1,-1),new Pos(-1,-1));
-        int[][] pieceClone=new int[10][9];
-        for(int i=0;i<=9;i++){
-            pieceClone[i]=piece[i].clone();
+
+    public static Move getGoodMove(int[][] piece, boolean isRedGo, int depth) {
+        Move goodMove = new Move(new Pos(-1, -1), new Pos(-1, -1));
+        int[][] pieceClone = new int[10][9];
+        for (int i = 0; i <= 9; i++) {
+            pieceClone[i] = piece[i].clone();
         }
 
-        isPlayerRed=isRedGo;
-        boolean FoundPv=false;
-        int value=-INF;
-        int alpha=-INF,beta=INF;
-        boolean isKingAlive=true;
+        isPlayerRed = isRedGo;
+        boolean FoundPv = false;
+        int value = -INF;
+        int alpha = -INF, beta = INF;
+        boolean isKingAlive = true;
 
-        for(int i=0;i<=9;i++){
-            for(int j=0;j<=8;j++){
-                if((isRedGo==false&&pieceClone[i][j]>=1&&pieceClone[i][j]<=7)||(isRedGo==true&&pieceClone[i][j]>=8&&pieceClone[i][j]<=14)){
-                    List<Pos> ret=Rule.PossibleMoves(pieceClone,j,i,pieceClone[i][j]);
-                    Pos fromPos=new Pos(j,i);
-                    Iterator<Pos> it=ret.iterator();
-                    while(it.hasNext()){
-                        Pos toPos=it.next();
+        for (int i = 0; i <= 9; i++) {
+            for (int j = 0; j <= 8; j++) {
+                if ((isRedGo == false && pieceClone[i][j] >= 1 && pieceClone[i][j] <= 7) || (isRedGo == true && pieceClone[i][j] >= 8 && pieceClone[i][j] <= 14)) {
+                    List<Pos> ret = Rule.PossibleMoves(pieceClone, j, i, pieceClone[i][j]);
+                    Pos fromPos = new Pos(j, i);
+                    Iterator<Pos> it = ret.iterator();
+                    while (it.hasNext()) {
+                        Pos toPos = it.next();
 
-                        int pieceID= pieceClone[toPos.y][toPos.x];
-                        pieceClone[toPos.y][toPos.x]=pieceClone[fromPos.y][fromPos.x];
-                        pieceClone[fromPos.y][fromPos.x]=0;
+                        int pieceID = pieceClone[toPos.y][toPos.x];
+                        pieceClone[toPos.y][toPos.x] = pieceClone[fromPos.y][fromPos.x];
+                        pieceClone[fromPos.y][fromPos.x] = 0;
 
-                        if(pieceID==1||pieceID==8){
-                            isKingAlive=false;
+                        if (pieceID == 1 || pieceID == 8) {
+                            isKingAlive = false;
                         }
 
-                        if(FoundPv){
-                            value=-PVS(pieceClone,(isRedGo==true)?false:true,depth-1,-alpha-1,-alpha,isKingAlive);
-                            if((value>alpha)&&(value<beta)){
-                                value=-PVS(pieceClone,(isRedGo==true)?false:true,depth-1,-beta,-alpha,isKingAlive);
+                        if (FoundPv) {
+                            value = -PVS(pieceClone, (isRedGo == true) ? false : true, depth - 1, -alpha - 1, -alpha, isKingAlive);
+                            if ((value > alpha) && (value < beta)) {
+                                value = -PVS(pieceClone, (isRedGo == true) ? false : true, depth - 1, -beta, -alpha, isKingAlive);
                             }
-                        }
-                        else{
-                            value=-PVS(pieceClone,(isRedGo==true)?false:true,depth-1,-beta,-alpha,isKingAlive);
-                        }
-
-                        pieceClone[fromPos.y][fromPos.x]=pieceClone[toPos.y][toPos.x];
-                        pieceClone[toPos.y][toPos.x]=pieceID;
-                        if(pieceID==1||pieceID==8){
-                            isKingAlive=true;
+                        } else {
+                            value = -PVS(pieceClone, (isRedGo == true) ? false : true, depth - 1, -beta, -alpha, isKingAlive);
                         }
 
-                        if(value>alpha){
-                            alpha=value;
-                            FoundPv=true;
-                            goodMove=new Move(fromPos,toPos);
+                        pieceClone[fromPos.y][fromPos.x] = pieceClone[toPos.y][toPos.x];
+                        pieceClone[toPos.y][toPos.x] = pieceID;
+                        if (pieceID == 1 || pieceID == 8) {
+                            isKingAlive = true;
+                        }
+
+                        if (value > alpha) {
+                            alpha = value;
+                            FoundPv = true;
+                            goodMove = new Move(fromPos, toPos);
                         }
                     }
                 }
@@ -277,54 +280,52 @@ public class AI {
         }
         return goodMove;
     }
-    public static int PVS(int[][] piece,boolean isRedGo,int depth,int alpha,int beta,boolean isKingAlive){
-        boolean FoundPv=false;
-        if(isKingAlive==false||depth<=0){
+
+    public static int PVS(int[][] piece, boolean isRedGo, int depth, int alpha, int beta, boolean isKingAlive) {
+        boolean FoundPv = false;
+        if (isKingAlive == false || depth <= 0) {
             return evaluate(piece);
         }
 
-        int value=-INF;
+        int value = -INF;
 
+        for (int i = 0; i <= 9; i++) {
+            for (int j = 0; j <= 8; j++) {
+                if ((isRedGo == false && piece[i][j] >= 1 && piece[i][j] <= 7) || (isRedGo == true && piece[i][j] >= 8 && piece[i][j] <= 14)) {
+                    List<Pos> ret = Rule.PossibleMoves(piece, j, i, piece[i][j]);
+                    Pos fromPos = new Pos(j, i);
+                    Iterator<Pos> it = ret.iterator();
+                    while (it.hasNext()) {
+                        Pos toPos = it.next();
+                        int pieceID = piece[toPos.y][toPos.x];
+                        piece[toPos.y][toPos.x] = piece[fromPos.y][fromPos.x];
+                        piece[fromPos.y][fromPos.x] = 0;
 
-
-        for(int i=0;i<=9;i++){
-            for(int j=0;j<=8;j++){
-                if((isRedGo==false&&piece[i][j]>=1&&piece[i][j]<=7)||(isRedGo==true&&piece[i][j]>=8&&piece[i][j]<=14)){
-                    List<Pos> ret=Rule.PossibleMoves(piece,j,i,piece[i][j]);
-                    Pos fromPos=new Pos(j,i);
-                    Iterator<Pos> it=ret.iterator();
-                    while(it.hasNext()){
-                        Pos toPos=it.next();
-                        int pieceID= piece[toPos.y][toPos.x];
-                        piece[toPos.y][toPos.x]=piece[fromPos.y][fromPos.x];
-                        piece[fromPos.y][fromPos.x]=0;
-
-                        if(pieceID==1||pieceID==8){
-                            isKingAlive=false;
+                        if (pieceID == 1 || pieceID == 8) {
+                            isKingAlive = false;
                         }
 
-                        if(FoundPv){
-                            value=-PVS(piece,(isRedGo==true)?false:true,depth-1,-alpha-1,-alpha,isKingAlive);
-                            if((value>alpha)&&(value<beta)){
-                                value=-PVS(piece,(isRedGo==true)?false:true,depth-1,-beta,-alpha,isKingAlive);
+                        if (FoundPv) {
+                            value = -PVS(piece, (isRedGo == true) ? false : true, depth - 1, -alpha - 1, -alpha, isKingAlive);
+                            if ((value > alpha) && (value < beta)) {
+                                value = -PVS(piece, (isRedGo == true) ? false : true, depth - 1, -beta, -alpha, isKingAlive);
                             }
-                        }
-                        else{
-                            value=-PVS(piece,(isRedGo==true)?false:true,depth-1,-beta,-alpha,isKingAlive);
-                        }
-
-                        piece[fromPos.y][fromPos.x]=piece[toPos.y][toPos.x];
-                        piece[toPos.y][toPos.x]=pieceID;
-                        if(pieceID==1||pieceID==8){
-                            isKingAlive=true;
+                        } else {
+                            value = -PVS(piece, (isRedGo == true) ? false : true, depth - 1, -beta, -alpha, isKingAlive);
                         }
 
-                        if(value>=beta){
+                        piece[fromPos.y][fromPos.x] = piece[toPos.y][toPos.x];
+                        piece[toPos.y][toPos.x] = pieceID;
+                        if (pieceID == 1 || pieceID == 8) {
+                            isKingAlive = true;
+                        }
+
+                        if (value >= beta) {
                             return beta;
                         }
-                        if(value>alpha){
-                            alpha=value;
-                            FoundPv=true;
+                        if (value > alpha) {
+                            alpha = value;
+                            FoundPv = true;
                         }
                     }
                 }
@@ -425,21 +426,20 @@ public class AI {
         return alpha;
     }*/
 
-    public static int getAttackNum(int[][] piece,boolean isRed){
-        int attackNum=0;
-        if(isRed==true){
-            for(int i=0;i<=9;i++){
-                for(int j=0;j<=8;j++){
-                    if(piece[i][j]>=8&&piece[i][j]<=14){
+    public static int getAttackNum(int[][] piece, boolean isRed) {
+        int attackNum = 0;
+        if (isRed == true) {
+            for (int i = 0; i <= 9; i++) {
+                for (int j = 0; j <= 8; j++) {
+                    if (piece[i][j] >= 8 && piece[i][j] <= 14) {
                         attackNum++;
                     }
                 }
             }
-        }
-        else{
-            for(int i=0;i<=9;i++){
-                for(int j=0;j<=8;j++){
-                    if(piece[i][j]>=1&&piece[i][j]<=7){
+        } else {
+            for (int i = 0; i <= 9; i++) {
+                for (int j = 0; j <= 8; j++) {
+                    if (piece[i][j] >= 1 && piece[i][j] <= 7) {
                         attackNum++;
                     }
                 }
@@ -448,19 +448,18 @@ public class AI {
         return attackNum;
     }
 
-    public static int evaluate(int[][] piece){
-        int score=0;
-        for(int i=0;i<=9;i++){
-            for(int j=0;j<=8;j++){
-                if(piece[i][j]>=1&&piece[i][j]<=7){
-                    score+=pieceValue[piece[i][j]-1][i][j];
-                }
-                else if(piece[i][j]>=8&&piece[i][j]<=14){
-                    score-=pieceValue[piece[i][j]-1][i][j];
+    public static int evaluate(int[][] piece) {
+        int score = 0;
+        for (int i = 0; i <= 9; i++) {
+            for (int j = 0; j <= 8; j++) {
+                if (piece[i][j] >= 1 && piece[i][j] <= 7) {
+                    score += pieceValue[piece[i][j] - 1][i][j];
+                } else if (piece[i][j] >= 8 && piece[i][j] <= 14) {
+                    score -= pieceValue[piece[i][j] - 1][i][j];
                 }
             }
         }
-        if(isPlayerRed) score*=-1;
+        if (isPlayerRed) score *= -1;
         return score;
     }
 }
