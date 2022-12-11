@@ -1,5 +1,5 @@
 # ChineseChess
-基于Android的中国象棋
+基于 Android 的中国象棋
 
 ## 主要技术
 - 实现了棋子走法的生成、象棋局面的判断。
